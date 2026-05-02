@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="Stream" Manufacturer="Stream" Version="0.1.0" UpgradeCode="00000000-0000-0000-0000-000000000000">
+    <!-- Placeholder WiX project stub for enterprise MSI packaging. -->
+  </Package>
+</Wix>
