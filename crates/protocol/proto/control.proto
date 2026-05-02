@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package stream.protocol.control;
+
+message ControlMessage {
+  oneof kind {
+    Hello hello = 1;
+    Bitrate bitrate = 2;
+    Nack nack = 3;
+    RefFrameInvalidate ref_frame_invalidate = 4;
+    InputEvent input_event = 5;
+    Ping ping = 6;
+    Pong pong = 7;
+  }
+
+  reserved 8 to 15;
+}
+
+message Hello {
+  string client_version = 1;
+  repeated string capabilities = 2;
+  reserved 16 to 2047;
+}
+
+message Bitrate {
+  uint32 target_bps = 1;
+  uint64 ts = 2;
+  reserved 16 to 2047;
+}
+
+message SeqRange {
+  uint64 start = 1;
+  uint64 end = 2;
+  reserved 16 to 2047;
+}
+
+message Nack {
+  uint32 stream_id = 1;
+  repeated SeqRange seq_ranges = 2;
+  reserved 16 to 2047;
+}
+
+message RefFrameInvalidate {
+  uint64 last_good_seq = 1;
+  reserved 16 to 2047;
+}
+
+message InputEvent {
+  oneof kind {
+    PlaceholderInput placeholder = 1;
+  }
+
+  reserved 2 to 15;
+}
+
+message PlaceholderInput {
+  reserved 1 to 15;
+}
+
+message Ping {
+  bytes tai64n = 1;
+  reserved 16 to 2047;
+}
+
+message Pong {
+  bytes tai64n = 1;
+  reserved 16 to 2047;
+}

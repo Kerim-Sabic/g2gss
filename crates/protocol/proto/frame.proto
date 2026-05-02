@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package stream.protocol.frame;
+
+message FrameHeader {
+  uint32 stream_id = 1;
+  uint64 seq = 2;
+  uint64 pts_us = 3;
+  Codec codec = 4;
+  uint32 flags = 5;
+  uint32 slice_idx = 6;
+  uint32 slice_count = 7;
+  reserved 8 to 15;
+}
+
+enum Codec {
+  CODEC_UNSPECIFIED = 0;
+  CODEC_H264 = 1;
+  CODEC_HEVC = 2;
+  CODEC_AV1 = 3;
+}
