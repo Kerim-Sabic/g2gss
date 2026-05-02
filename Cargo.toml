@@ -1,0 +1,38 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/engine",
+    "crates/engine/capture-dxgi",
+    "crates/engine/capture-wgc",
+    "crates/engine/encode-nvenc",
+    "crates/engine/encode-amf",
+    "crates/engine/encode-qsv",
+    "crates/engine/transport-quic",
+    "crates/engine/pairing-noise",
+    "crates/engine/input",
+    "crates/engine/audio",
+    "crates/protocol",
+    "crates/ipc",
+    "crates/host-service",
+    "tools/latency-bench",
+    "tools/encoder-conformance",
+    "tools/loopback",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.86"
+license = "UNLICENSED"
+publish = false
+
+[workspace.lints.rust]
+unsafe_op_in_unsafe_fn = "forbid"
+
+[workspace.lints.clippy]
+dbg_macro = "forbid"
+todo = "forbid"
+unwrap_used = "forbid"
+
+[workspace.metadata.cargo-machete]
+ignored = []
