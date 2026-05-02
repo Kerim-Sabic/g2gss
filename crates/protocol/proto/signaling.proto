@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package stream.protocol.signaling;
+
+message SignalingMessage {
+  oneof kind {
+    Offer offer = 1;
+    Answer answer = 2;
+    Candidate candidate = 3;
+    RoomCode room_code = 4;
+  }
+
+  reserved 5 to 15;
+}
+
+message Offer {
+  bytes sdp_blob = 1;
+  reserved 16 to 2047;
+}
+
+message Answer {
+  bytes sdp_blob = 1;
+  reserved 16 to 2047;
+}
+
+message Candidate {
+  string ufrag = 1;
+  bytes blob = 2;
+  reserved 16 to 2047;
+}
+
+message RoomCode {
+  uint32 code = 1;
+  reserved 16 to 2047;
+}
